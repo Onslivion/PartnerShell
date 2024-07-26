@@ -23,7 +23,7 @@ function Connect-ExchangeOnline-ViaPartner {
     )
     Process {
         $token = New-PartnerAccessToken -ApplicationId "fb78d390-0c51-40cd-8e17-fdbfab77341b" -Scopes "https://outlook.office365.com/powershell-liveid" -Tenant $Tenant
-        Connect-ExchangeOnline -AccessToken $token.AccessToken -DelegatedOrganization $Tenant
+        Connect-ExchangeOnline -AccessToken $token.AccessToken -DelegatedOrganization $Tenant -UserPrincipalName $token.Account.Username
     }
 }
 
@@ -34,7 +34,7 @@ function Connect-IPPSSession-ViaPartner {
     )
     Process {
         $token = New-PartnerAccessToken -ApplicationId "fb78d390-0c51-40cd-8e17-fdbfab77341b" -Scopes "https://ps.compliance.protection.outlook.com/PowerShell-LiveId" -Tenant $Tenant
-        Connect-ExchangeOnline -ConnectionUri "https://ps.compliance.protection.outlook.com/PowerShell-LiveId" -AccessToken $token.AccessToken -DelegatedOrganization $Tenant
+        Connect-ExchangeOnline -ConnectionUri "https://ps.compliance.protection.outlook.com/PowerShell-LiveId" -AccessToken $token.AccessToken -DelegatedOrganization $Tenant -UserPrincipalName $token.Account.Username
     }
 }
 
